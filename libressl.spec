@@ -9,7 +9,7 @@
 %define tlsdev %{mklibname tls -d}
 
 Name: libressl
-Version: 2.2.2
+Version: 2.2.3
 Release: 1
 Source0: http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/%{name}-%{version}.tar.gz
 Summary: Secure Sockets Layer communications libs & utils
