@@ -1,15 +1,16 @@
-%define major 35
-%define tlsmajor 6
+%define cryptomajor 36
+%define sslmajor 37
+%define tlsmajor 9
 
-%define libcrypto %{mklibname crypto %{major}}
+%define libcrypto %{mklibname crypto %{cryptomajor}}
 %define cryptodev %{mklibname crypto -d}
-%define libssl %{mklibname ssl %{major}}
+%define libssl %{mklibname ssl %{sslmajor}}
 %define ssldev %{mklibname ssl -d}
 %define libtls %{mklibname tls %{tlsmajor}}
 %define tlsdev %{mklibname tls -d}
 
 Name: libressl
-Version: 2.2.3
+Version: 2.3.0
 Release: 1
 Source0: http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/%{name}-%{version}.tar.gz
 Summary: Secure Sockets Layer communications libs & utils
@@ -40,7 +41,7 @@ various encryption and decription algorithms and protocols, including DES, RC4,
 RSA and SSL.
 
 %files -n %{libcrypto}
-/%{_lib}/libcrypto.so.%{major}*
+/%{_lib}/libcrypto.so.%{cryptomajor}*
 /%{_lib}/libcrypto.so.1.0.0
 
 %package -n %{cryptodev}
@@ -76,7 +77,7 @@ various encryption and decription algorithms and protocols, including DES, RC4,
 RSA and SSL.
 
 %files -n %{libssl}
-/%{_lib}/libssl.so.%{major}*
+/%{_lib}/libssl.so.%{sslmajor}*
 /%{_lib}/libssl.so.1.0.0
 
 %package -n %{ssldev}
@@ -145,9 +146,9 @@ Development files for the libressl SSL/TLS library
 %makeinstall_std
 mkdir -p %{buildroot}%{_libdir}
 mv %{buildroot}/%{_lib}/pkgconfig %{buildroot}%{_libdir}
-ln -s ../../%{_lib}/libssl.so.%{major} %{buildroot}%{_libdir}/libssl.so
-ln -s ../../%{_lib}/libcrypto.so.%{major} %{buildroot}%{_libdir}/libcrypto.so
-ln -s ../../%{_lib}/libtls.so.%{major} %{buildroot}%{_libdir}/libtls.so
+ln -s ../../%{_lib}/libssl.so.%{sslmajor} %{buildroot}%{_libdir}/libssl.so
+ln -s ../../%{_lib}/libcrypto.so.%{cryptomajor} %{buildroot}%{_libdir}/libcrypto.so
+ln -s ../../%{_lib}/libtls.so.%{tlsmajor} %{buildroot}%{_libdir}/libtls.so
 
 find %{buildroot}%{_includedir} -name "*.h" |while read r; do
 	b="`basename $r`"
@@ -159,8 +160,8 @@ find %{buildroot}%{_includedir} -name "*.h" |while read r; do
 done
 
 # For compatibility with OpenSSL
-ln -sf libssl.so.%{major} %{buildroot}/%{_lib}/libssl.so.1.0.0
-ln -sf libcrypto.so.%{major} %{buildroot}/%{_lib}/libcrypto.so.1.0.0
+ln -sf libssl.so.%{sslmajor} %{buildroot}/%{_lib}/libssl.so.1.0.0
+ln -sf libcrypto.so.%{cryptomajor} %{buildroot}/%{_lib}/libcrypto.so.1.0.0
 
 %check
 make check
