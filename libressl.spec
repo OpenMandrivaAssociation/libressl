@@ -1,6 +1,6 @@
-%define cryptomajor 37
-%define sslmajor 38
-%define tlsmajor 10
+%define cryptomajor 38
+%define sslmajor 39
+%define tlsmajor 11
 
 %define libcrypto %{mklibname crypto %{cryptomajor}}
 %define cryptodev %{mklibname crypto -d}
@@ -10,7 +10,7 @@
 %define tlsdev %{mklibname tls -d}
 
 Name: libressl
-Version: 2.3.4
+Version: 2.4.2
 Release: 1
 Source0: http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/%{name}-%{version}.tar.gz
 Summary: Secure Sockets Layer communications libs & utils
