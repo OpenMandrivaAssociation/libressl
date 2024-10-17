@@ -14,7 +14,7 @@ Version: 2.4.2
 Release: 1
 Source0: http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/%{name}-%{version}.tar.gz
 Summary: Secure Sockets Layer communications libs & utils
-URL: http://libressl.org/
+URL: https://libressl.org/
 License: BSD-like
 Group: System/Libraries
 %rename openssl
